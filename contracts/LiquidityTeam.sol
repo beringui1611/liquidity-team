@@ -118,8 +118,8 @@ contract LiquidityTeam is ERC20, Manager, Oracle, IErrorInterface {
     )
     onlyManager
     external {
-        IERC20(tokneA).approve(manager, amountA);
-        IERC20(tokenB).approve(manager, amountB);
+        IERC20(tokneA).approve(positionManager, amountA);
+        IERC20(tokenB).approve(positionManager, amountB);
 
         INonfungiblePositionManager(positionManager).mint(
             INonfungiblePositionManager.MintParams({
@@ -147,8 +147,8 @@ contract LiquidityTeam is ERC20, Manager, Oracle, IErrorInterface {
         uint256 amount1Desired
     ) 
     external onlyManager {
-        IERC20(tokenA).approve(manager, amount0Desired);
-        IERC20(tokenB).approve(manager, amount1Desired);
+        IERC20(tokenA).approve(positionManager, amount0Desired);
+        IERC20(tokenB).approve(positionManager, amount1Desired);
 
         INonfungiblePositionManager(positionManager).increaseLiquidity(
             INonfungiblePositionManager.IncreaseLiquidityParams({
